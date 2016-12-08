@@ -1,0 +1,28 @@
+server {
+	  listen 3000;
+
+    server_name localhost;
+
+    root /srv/yadaguru/yadaguru-app;
+    index index.html;
+
+    location / {
+    }
+
+    include /etc/nginx/basic.conf;
+}
+
+server {
+	  listen 9000;
+
+    server_name localhost;
+
+    root /srv/yadaguru/yadaguru-admin/app;
+    index index.html;
+
+    location / {
+    }
+
+    include /etc/nginx/basic.conf;
+}
+

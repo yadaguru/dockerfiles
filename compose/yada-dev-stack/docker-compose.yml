@@ -1,11 +1,11 @@
 postgres:
    tty: TRUE
-   restart: always
+   restart: "always"
    image: yadaguru/postgres:1.0
 
 api:
    tty: TRUE
-   restart: always
+   restart: "always"
    image: yadaguru/api:1.0
    ports:
      - "3005:3005"
@@ -17,3 +17,14 @@ api:
    volumes:
      - ~/yadaguru/yadaguru-api:/opt/yadaguru-api
      - ./entrypoint.sh:/entrypoint.sh
+
+static:
+   tty: TRUE
+   restart: "always"
+   image: yadaguru/static:1.0
+   ports:
+     - "3000:3000"
+     - "9000:9000"
+   volumes:
+     - ~/yadaguru/yadaguru-app:/srv/yadaguru/yadaguru-app
+     - ~/yadaguru/yadaguru-admin/app:/srv/yadaguru/yadaguru-admin/app
