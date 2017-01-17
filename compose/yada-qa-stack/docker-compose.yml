@@ -1,9 +1,13 @@
 postgres:
    tty: TRUE
    restart: "always"
-   image: yadaguru/postgres:1.0
+   image: yadaguru/postgres:1.1
    ports:
      - "5432:5432"
+   environment:
+     POSTGRES_USER: yadaguru
+     POSTGRES_DB: yadaguru
+     POSTGRES_PASSWORD: configureOnServer
 
 api:
    tty: TRUE
@@ -15,7 +19,9 @@ api:
    links:
      - postgres:postgres
    environment:
-     NODE_ENV: development
+     NODE_ENV: qa
+     SECRET: configureOnServer
+     DATABASE_URL: postgres://yadaguru:configureOnServer@localhost/yadaguru
 
 static:
    tty: TRUE
