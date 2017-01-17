@@ -1,0 +1,26 @@
+postgres:
+   tty: TRUE
+   restart: "always"
+   image: yadaguru/postgres:1.0
+   ports:
+     - "5432:5432"
+
+api:
+   tty: TRUE
+   restart: "always"
+   image: yadaguru/api:1.0
+   ports:
+     - "3005:3005"
+     - "5858:5858"
+   links:
+     - postgres:postgres
+   environment:
+     NODE_ENV: development
+
+static:
+   tty: TRUE
+   restart: "always"
+   image: yadaguru/static:1.0
+   ports:
+     - "3000:3000"
+     - "9000:9000"
