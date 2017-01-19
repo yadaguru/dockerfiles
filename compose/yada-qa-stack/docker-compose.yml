@@ -19,6 +19,7 @@ api:
    links:
      - postgres:postgres
    environment:
+     MY_BRANCH: master
      NODE_ENV: qa
      SECRET: configureOnServer
      DATABASE_URL: postgres://yadaguru:configureOnServer@localhost/yadaguru
@@ -26,7 +27,9 @@ api:
 static:
    tty: TRUE
    restart: "always"
-   image: yadaguru/static:1.1
+   image: yadaguru/static:1.2
+   environment:
+     MY_BRANCH: master
    ports:
      - "3000:3000"
      - "9000:9000"
