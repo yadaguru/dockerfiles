@@ -22,7 +22,8 @@ RUN git clone https://github.com/yadaguru/yadaguru-app.git /srv/yadaguru/yadagur
     git clone https://github.com/yadaguru/yadaguru-admin.git /srv/yadaguru/yadaguru-admin && \
     npm install -g bower gulp-cli && \
     cd /srv/yadaguru/yadaguru-app && \
-    npm install --unsafe-perm && bower install --force-latest --allow-root && gulp build && \
+    npm install --unsafe-perm && bower install --force-latest --allow-root && \
+    gulp build && gulp constants --db qa && \
     cd /srv/yadaguru/yadaguru-admin && \
     npm install --unsafe-perm
 
