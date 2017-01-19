@@ -22,7 +22,7 @@ api:
      MY_BRANCH: master
      NODE_ENV: qa
      SECRET: configureOnServer
-     DATABASE_URL: postgres://yadaguru:configureOnServer@localhost/yadaguru
+     DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
 
 static:
    tty: TRUE
