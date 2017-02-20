@@ -23,7 +23,7 @@ api:
 static:
    tty: TRUE
    restart: "always"
-   image: yadaguru/static:1.0
+   image: yadaguru/static:1.8
    ports:
      - "3000:3000"
      - "9000:9000"

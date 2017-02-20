@@ -30,7 +30,7 @@ api:
 static:
    tty: TRUE
    restart: "always"
-   image: yadaguru/static:1.5
+   image: yadaguru/static:1.8
    environment:
      MY_BRANCH: master
      NODE_ENV: qam
