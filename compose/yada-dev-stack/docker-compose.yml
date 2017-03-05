@@ -30,3 +30,18 @@ static:
    volumes:
      - ~/yadaguru/yadaguru-app:/srv/yadaguru/yadaguru-app
      - ~/yadaguru/yadaguru-admin/app:/srv/yadaguru/yadaguru-admin/app
+     - ./entrypoint-static.sh:/entrypoint.sh
+
+sms:
+  tty: TRUE
+  restart: "no"
+  image: yadaguru/sms:1.0
+  links:
+    - postgres:postgres
+  environment:
+    MY_BRANCH: master
+    NODE_ENV: qam
+    DATABASE_URL: postgres://yadaguru:yadaguru@postgres/yadaguru
+  volumes:
+     - ~/yadaguru/yadaguru-sms:/opt/yadaguru-sms
+     - ./entrypoint-sms.sh:/entrypoint.sh
