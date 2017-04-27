@@ -16,6 +16,7 @@ api:
      - postgres:postgres
    environment:
      NODE_ENV: development
+     SECRET_SALT: development_super_secret_salt_string
    volumes:
      - ~/yadaguru/yadaguru-api:/opt/yadaguru-api
      - ./entrypoint.sh:/entrypoint.sh
@@ -40,7 +41,7 @@ sms:
     - postgres:postgres
   environment:
     MY_BRANCH: master
-    NODE_ENV: qam
+    NODE_ENV: development
     DATABASE_URL: postgres://yadaguru:yadaguru@postgres/yadaguru
   volumes:
      - ~/yadaguru/yadaguru-sms:/opt/yadaguru-sms
