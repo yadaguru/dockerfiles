@@ -27,7 +27,7 @@ api:
 static:
    tty: TRUE
    restart: "always"
-   image: yadaguru/static:1.8
+   image: yadaguru/static:1.9
    environment:
      MY_BRANCH: master
    ports:

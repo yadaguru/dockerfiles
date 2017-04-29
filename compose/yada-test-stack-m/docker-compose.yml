@@ -41,7 +41,7 @@ static:
 sms:
   tty: TRUE
   restart: "no"
-  image: yadaguru/sms:1.0
+  image: yadaguru/sms:1.9
    links:
      - postgres:postgres
    environment:

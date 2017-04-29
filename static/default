@@ -3,7 +3,7 @@ server {
 
     server_name localhost;
 
-    root /srv/yadaguru/yadaguru-app;
+    root /srv/yadaguru/yadaguru-app/dist;
     index index.html;
 
     location / {
