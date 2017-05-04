@@ -8,7 +8,7 @@ postgres:
 api:
    tty: TRUE
    restart: "always"
-   image: yadaguru/api:1.0
+   image: yadaguru/api:1.0.0
    ports:
      - "3005:3005"
      - "5858:5858"
@@ -18,8 +18,7 @@ api:
      NODE_ENV: development
      SECRET_SALT: development_super_secret_salt_string
    volumes:
-     - ~/yadaguru/yadaguru-api:/opt/yadaguru-api
-     - ./entrypoint.sh:/entrypoint.sh
+     - ~/yadaguru/yadaguru-api:/usr/src/app
 
 static:
    tty: TRUE
@@ -43,6 +42,7 @@ sms:
     MY_BRANCH: master
     NODE_ENV: development
     DATABASE_URL: postgres://yadaguru:yadaguru@postgres/yadaguru
+    SECRET_SALT: development_super_secret_salt_string
   volumes:
      - ~/yadaguru/yadaguru-sms:/opt/yadaguru-sms
      - ./entrypoint-sms.sh:/entrypoint.sh
