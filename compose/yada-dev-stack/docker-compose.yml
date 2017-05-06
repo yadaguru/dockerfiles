@@ -20,17 +20,23 @@ api:
    volumes:
      - ~/yadaguru/yadaguru-api:/usr/src/app
 
-static:
-   tty: TRUE
-   restart: "always"
-   image: yadaguru/static:1.9
-   ports:
-     - "3000:3000"
-     - "9000:9000"
-   volumes:
-     - ~/yadaguru/yadaguru-app:/srv/yadaguru/yadaguru-app
-     - ~/yadaguru/yadaguru-admin/app:/srv/yadaguru/yadaguru-admin/app
-     - ./entrypoint-static.sh:/entrypoint.sh
+app:
+  tty: TRUE
+  restart: "always"
+  image: yadaguru/app:1.0.0
+  ports: 
+    - "3000:80"
+  volumes: 
+    - ~/yadaguru/yadaguru-app/dist:/usr/share/nginx/html
+
+admin:
+  tty: TRUE
+  restart: "always"
+  image: yadaguru/admin:1.0.0
+  ports: 
+    - "9000:80"
+  volumes: 
+    - ~/yadaguru/yadaguru-admin/app:/usr/share/nginx/html
 
 sms:
   tty: TRUE
