@@ -21,6 +21,7 @@ api:
    environment:
      NODE_ENV: qa
      SECRET: configureOnServer
+     SECRET_SALT: configureOnServer 
      DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
 
 app:
