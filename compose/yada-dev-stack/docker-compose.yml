@@ -45,7 +45,6 @@ sms:
   links:
     - postgres:postgres
   environment:
-    MY_BRANCH: master
     NODE_ENV: development
     DATABASE_URL: postgres://yadaguru:yadaguru@postgres/yadaguru
     SECRET_SALT: development_super_secret_salt_string

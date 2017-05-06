@@ -12,13 +12,12 @@ postgres:
 api:
    tty: TRUE
    restart: "always"
-   image: yadaguru/api:1.0
+   image: yadaguru/api:1.0.0
    ports:
      - "23005:3005"
    links:
      - postgres:postgres
    environment:
-     MY_BRANCH: master
      NODE_ENV: qam
      SECRET: configureOnServer
      DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
@@ -27,25 +26,27 @@ api:
      TWILIO_AUTH_TOKEN: configureOnServer
      TEST_NUMBER: configureOnServer
 
-static:
-   tty: TRUE
-   restart: "always"
-   image: yadaguru/static:1.8
-   environment:
-     MY_BRANCH: master
-     NODE_ENV: qam
-   ports:
-     - "23000:3000"
-     - "29000:9000"
+app:
+  tty: TRUE
+  restart: "always"
+  image: yadaguru/app:1.0.0qam
+  ports: 
+    - "23000:80"
+
+admin:
+  tty: TRUE
+  restart: "always"
+  image: yadaguru/admin:1.0.0qam
+  ports: 
+    - "29000:80"
 
 sms:
   tty: TRUE
   restart: "no"
-  image: yadaguru/sms:1.9
+  image: yadaguru/sms:1.0.0
    links:
      - postgres:postgres
    environment:
-     MY_BRANCH: master
      NODE_ENV: qam
      DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
      TWILIO_PHONE_NUMBER: configureOnServer
