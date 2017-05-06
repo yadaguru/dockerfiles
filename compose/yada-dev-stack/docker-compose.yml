@@ -41,7 +41,7 @@ admin:
 sms:
   tty: TRUE
   restart: "no"
-  image: yadaguru/sms:1.0
+  image: yadaguru/sms:1.0.0
   links:
     - postgres:postgres
   environment:
@@ -51,4 +51,3 @@ sms:
     SECRET_SALT: development_super_secret_salt_string
   volumes:
      - ~/yadaguru/yadaguru-sms:/opt/yadaguru-sms
-     - ./entrypoint-sms.sh:/entrypoint.sh
