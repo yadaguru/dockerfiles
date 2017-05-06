@@ -45,6 +45,6 @@ sms:
   links:
     - postgres:postgres
   environment:
-    NODE_ENV: development
+    NODE_ENV: qa
     DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
     SECRET_SALT: configureOnServer 
