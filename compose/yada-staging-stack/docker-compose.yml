@@ -43,11 +43,11 @@ admin:
 sms:
   tty: TRUE
   restart: "no"
-  image: yadaguru/sms:1.0.0
+  image: yadaguru/sms:1.0.1
    links:
      - postgres:postgres
    environment:
-     NODE_ENV: stage
+     NODE_ENV: staging
      DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
      SECRET_SALT: configureOnServer 
      TWILIO_PHONE_NUMBER: configureOnServer
