@@ -53,4 +53,5 @@ sms:
      TWILIO_PHONE_NUMBER: configureOnServer
      TWILIO_ACCOUNT_SID: configureOnServer
      TWILIO_AUTH_TOKEN: configureOnServer
+     APP_DOMAIN: staging.yadaguru.com
     
