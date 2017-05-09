@@ -1,0 +1,56 @@
+postgres:
+   tty: TRUE
+   restart: "always"
+   image: yadaguru/postgres:1.2
+   ports:
+     - "5432:5432"
+   environment:
+     POSTGRES_USER: yadaguru
+     POSTGRES_DB: yadaguru
+     POSTGRES_PASSWORD: configureOnServer
+
+api:
+   tty: TRUE
+   restart: "always"
+   image: yadaguru/api:1.0.1
+   ports:
+     - "3005:3005"
+   links:
+     - postgres:postgres
+   environment:
+     NODE_ENV: staging
+     SECRET: configureOnServer
+     SECRET_SALT: configureOnServer 
+     DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
+     TWILIO_PHONE_NUMBER: configureOnServer
+     TWILIO_ACCOUNT_SID: configureOnServer
+     TWILIO_AUTH_TOKEN: configureOnServer
+
+app:
+  tty: TRUE
+  restart: "always"
+  image: yadaguru/app:1.0.0stage
+  ports: 
+    - "3000:80"
+
+admin:
+  tty: TRUE
+  restart: "always"
+  image: yadaguru/admin:1.0.0stage
+  ports: 
+    - "9000:80"
+
+sms:
+  tty: TRUE
+  restart: "no"
+  image: yadaguru/sms:1.0.0
+   links:
+     - postgres:postgres
+   environment:
+     NODE_ENV: stage
+     DATABASE_URL: postgres://yadaguru:configureOnServer@postgres/yadaguru
+     SECRET_SALT: configureOnServer 
+     TWILIO_PHONE_NUMBER: configureOnServer
+     TWILIO_ACCOUNT_SID: configureOnServer
+     TWILIO_AUTH_TOKEN: configureOnServer
+    
