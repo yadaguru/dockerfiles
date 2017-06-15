@@ -1,14 +1,18 @@
 postgres:
    tty: TRUE
    restart: "always"
-   image: yadaguru/postgres:1.0
+   image: postgres:9.4.9
+   environment:
+     POSTGRES_USER: yadaguru
+     POSTGRES_DB: yadaguru
+     POSTGRES_PASSWORD: yadaguru
    ports:
      - "5432:5432"
 
 api:
    tty: TRUE
    restart: "always"
-   image: yadaguru/api:1.0.0
+   image: yadaguru/api:1.1.0
    ports:
      - "3005:3005"
      - "5858:5858"
@@ -16,6 +20,7 @@ api:
      - postgres:postgres
    environment:
      NODE_ENV: development
+     DATABASE_URL: postgres://yadaguru:yadaguru@postgres/yadaguru
      SECRET_SALT: development_super_secret_salt_string
    volumes:
      - ~/yadaguru/yadaguru-api:/usr/src/app
