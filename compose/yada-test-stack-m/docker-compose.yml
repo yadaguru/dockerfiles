@@ -1,7 +1,7 @@
 postgres:
    tty: TRUE
    restart: "always"
-   image: yadaguru/postgres:1.1
+   image: postgres:9.4.9
    ports:
      - "25432:5432"
    environment:
@@ -12,7 +12,7 @@ postgres:
 api:
    tty: TRUE
    restart: "always"
-   image: yadaguru/api:1.0.0
+   image: yadaguru/api:1.1.0
    ports:
      - "23005:3005"
    links:

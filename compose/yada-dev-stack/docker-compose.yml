@@ -2,12 +2,12 @@ postgres:
    tty: TRUE
    restart: "always"
    image: postgres:9.4.9
+   ports:
+     - "5432:5432"
    environment:
      POSTGRES_USER: yadaguru
      POSTGRES_DB: yadaguru
      POSTGRES_PASSWORD: yadaguru
-   ports:
-     - "5432:5432"
 
 api:
    tty: TRUE
