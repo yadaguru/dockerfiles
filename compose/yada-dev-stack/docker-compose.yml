@@ -28,7 +28,7 @@ api:
 app:
   tty: TRUE
   restart: "always"
-  image: yadaguru/app:1.0.0
+  image: yadaguru/app:1.1.0
   ports: 
     - "3000:80"
   volumes: 

@@ -29,7 +29,7 @@ api:
 app:
   tty: TRUE
   restart: "always"
-  image: yadaguru/app:1.0.0stage
+  image: yadaguru/app:1.1.0stage
   ports: 
     - "3000:80"
 
